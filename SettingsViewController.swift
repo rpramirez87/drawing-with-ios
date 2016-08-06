@@ -9,9 +9,17 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
+    weak var drawVC : DrawingViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
     }
+    @IBAction func clearCanvas(sender: AnyObject) {
+        self.drawVC?.clear()
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+
 }

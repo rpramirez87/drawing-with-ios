@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Drawing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="drawing_with_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DrawingViewController" customModule="drawing_with_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -71,7 +71,7 @@
                                         </constraints>
                                         <state key="normal" image="settings"/>
                                         <connections>
-                                            <segue destination="a4X-wT-1TE" kind="show" id="pmq-2o-jSG"/>
+                                            <segue destination="a4X-wT-1TE" kind="show" identifier="drawingToSettingsSegue" id="pmq-2o-jSG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -114,7 +114,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="Ivh-VI-4cZ"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Ivh-VI-4cZ">
+                        <barButtonItem key="rightBarButtonItem" title="Erase" id="Ekr-rk-q4Z">
+                            <connections>
+                                <action selector="clearCanvas:" destination="a4X-wT-1TE" id="Yo0-pB-Yd2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0m-aG-5VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

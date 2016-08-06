@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  drawing-with-ios
 //
 //  Created by Ron Ramirez on 8/6/16.
@@ -8,15 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBarHidden = false
     }
 }
-

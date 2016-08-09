@@ -22,4 +22,10 @@ class SettingsViewController: UIViewController {
         
     }
 
+    @IBAction func shareButtonTapped(sender: AnyObject) {
+        if let image = self.drawVC?.imageView.image {
+            let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
 }

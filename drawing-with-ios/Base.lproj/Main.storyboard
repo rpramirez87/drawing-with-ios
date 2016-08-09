@@ -142,11 +142,35 @@
                                     <action selector="shareButtonTapped:" destination="a4X-wT-1TE" eventType="touchUpInside" id="xPF-3f-Ec1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brush Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNj-zw-BbP">
+                                <rect key="frame" x="216" y="162" width="168" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="QHM-09-4zR"/>
+                                    <constraint firstAttribute="width" constant="168" id="mXi-gI-Z00"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="aTM-0R-hCc">
+                                <rect key="frame" x="214" y="202" width="172" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EDv-xo-qhO"/>
+                                    <constraint firstAttribute="width" constant="168" id="UzU-42-a31"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="brushSizeSlider:" destination="a4X-wT-1TE" eventType="valueChanged" id="kDG-Nm-g2m"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xB1-65-5O5" firstAttribute="top" secondItem="fgP-2z-InM" secondAttribute="bottom" constant="38" id="BRL-Do-B2q"/>
+                            <constraint firstItem="dNj-zw-BbP" firstAttribute="centerX" secondItem="cR4-F2-p8V" secondAttribute="centerX" id="TN8-AG-JQy"/>
+                            <constraint firstItem="aTM-0R-hCc" firstAttribute="centerX" secondItem="cR4-F2-p8V" secondAttribute="centerX" id="f1O-Zl-DnF"/>
+                            <constraint firstItem="aTM-0R-hCc" firstAttribute="top" secondItem="dNj-zw-BbP" secondAttribute="bottom" constant="20" id="hKo-vG-Rvf"/>
                             <constraint firstItem="xB1-65-5O5" firstAttribute="centerX" secondItem="cR4-F2-p8V" secondAttribute="centerX" id="sHJ-gk-bEl"/>
+                            <constraint firstItem="dNj-zw-BbP" firstAttribute="top" secondItem="xB1-65-5O5" secondAttribute="bottom" constant="20" id="yn1-oe-86g"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Ivh-VI-4cZ">
@@ -156,6 +180,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="slider" destination="aTM-0R-hCc" id="MDn-KZ-0zX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0m-aG-5VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

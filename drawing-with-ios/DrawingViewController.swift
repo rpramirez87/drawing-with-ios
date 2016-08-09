@@ -17,6 +17,7 @@ class DrawingViewController: UIViewController {
     var red : CGFloat = 0
     var green : CGFloat = 0
     var blue : CGFloat = 0
+    var lineWidth : CGFloat = 15
     
     
     // MARK: View Controller Functions
@@ -94,7 +95,7 @@ class DrawingViewController: UIViewController {
         CGContextSetLineCap(context, .Round)
         
         // Line Width
-        CGContextSetLineWidth(context, 15)
+        CGContextSetLineWidth(context, self.lineWidth)
         CGContextStrokePath(context)
         
         self.imageView.image = UIGraphicsGetImageFromCurrentImageContext()

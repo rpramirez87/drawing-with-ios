@@ -25,6 +25,8 @@ class DrawingViewController: UIViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawingViewController.appBecameActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        blueButtonTapped(UIButton())
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,29 +60,7 @@ class DrawingViewController: UIViewController {
             let point = touch.locationInView(imageView)
             print(point)
             
-            
-            //Draw Context
-            UIGraphicsBeginImageContext(self.imageView.frame.size)
-            
-            let context = UIGraphicsGetCurrentContext()
-            self.imageView.image?.drawInRect(CGRect(x:0,y:0,width: self.imageView.frame.size.width, height: self.imageView.frame.size.height))
-            CGContextMoveToPoint(context, lastPoint.x, lastPoint.y)
-            CGContextAddLineToPoint(context, point.x, point.y)
-            
-            // Stroke Color
-            CGContextSetRGBStrokeColor(context, self.red, self.green, self.blue, 1.0)
-            
-            // Line Size - Round/Square
-            CGContextSetLineCap(context, .Round)
-            
-            // Line Width
-            CGContextSetLineWidth(context, 15)
-            CGContextStrokePath(context)
-            
-            self.imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-            
-            UIGraphicsEndImageContext()
-            
+            drawBetweenPoints(self.lastPoint, secondPoint: point)
             self.lastPoint = point
         }
         
@@ -91,9 +71,36 @@ class DrawingViewController: UIViewController {
         if let touch = touches.first {
             let point = touch.locationInView(imageView)
             print(point)
+            
+            drawBetweenPoints(self.lastPoint, secondPoint: point)
         }
         print("End")
         self.buttonStackView.hidden = false
+    }
+    
+    func drawBetweenPoints(firstPoint: CGPoint, secondPoint : CGPoint) {
+        //Draw Context
+        UIGraphicsBeginImageContext(self.imageView.frame.size)
+        
+        let context = UIGraphicsGetCurrentContext()
+        self.imageView.image?.drawInRect(CGRect(x:0,y:0,width: self.imageView.frame.size.width, height: self.imageView.frame.size.height))
+        CGContextMoveToPoint(context, firstPoint.x, firstPoint.y)
+        CGContextAddLineToPoint(context, secondPoint.x, secondPoint.y)
+        
+        // Stroke Color
+        CGContextSetRGBStrokeColor(context, self.red, self.green, self.blue, 1.0)
+        
+        // Line Size - Round/Square
+        CGContextSetLineCap(context, .Round)
+        
+        // Line Width
+        CGContextSetLineWidth(context, 15)
+        CGContextStrokePath(context)
+        
+        self.imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
     }
     
     // MARK: Notification Center - Helper Function
